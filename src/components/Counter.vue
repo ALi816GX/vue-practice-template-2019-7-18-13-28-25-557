@@ -1,43 +1,36 @@
 <template>
-    <div id="app">
-
-        <p>{{count}}</p>
-        <button v-on:click="add">点我+</button>
-        <button v-on:click="decrease">点我-</button>
-
+    <div class="counter">
+        <div>{{number}}</div>
+        <button v-on:click="add">add+</button>
+        <button v-on:click="minus">minus-</button>
     </div>
 </template>
 
 <script>
-
-
     export default {
+        name: 'counter',
 
-        name:`app`,
-        data: function () {
-            return{
-                count:0
-            };
+        data () {
+            return {
+            }
         },
 
         methods: {
-            add: function () {
-                this.count++;
+            add () {
+                this.number++;
+                this.$root.$emit('change', {"index": this.index, "number": this.number});
             },
-            decrease: function () {
-                this.count--;
+            minus () {
+                this.number--;
+                this.$root.$emit('change', {"index": this.index, "number": this.number});
             }
+        },
+
+        props: {
+            number: Number,
+            index: Number
         }
     }
-</script>
 
-<style>
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-    }
-</style>
+
+</script>
