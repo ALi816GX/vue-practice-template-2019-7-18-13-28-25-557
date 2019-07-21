@@ -2,26 +2,28 @@
   <div id="app">
     <div>
       <span>请输入数字：</span>
-      <input type="text" v-model="counterNumber">
+      <input type="text" v-model="counterNum">
     </div>
-    <Counter/>
+
+    <CounterGroup :counterNum = "counterNum"/>
+
   </div>
 </template>
 
 <script>
-    import Counter from './components/Counter.vue'
+    import CounterGroup from './components/CounterGroup.vue'
 
     export default {
         name: 'app',
         data() {
             return {
-                counterNumber: 0
+                counterNum: 0
             }
         },
 
 
         components: {
-            Counter
+            CounterGroup
         }
 
     }
@@ -34,6 +36,6 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
+    margin-top: 20px;
   }
 </style>
