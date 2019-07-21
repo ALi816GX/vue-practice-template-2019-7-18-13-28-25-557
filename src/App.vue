@@ -1,55 +1,39 @@
 <template>
   <div id="app">
-    <!--<img alt="Vue logo" src="./assets/logo.png">-->
-    <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
-
-    <p>woheni{{count}}</p>
-    <button v-on:click="add">点我+</button>
-    <button v-on:click="decrease">点我-</button>
-
-
-    <!--<div id="example-1">-->
-      <!--<button v-on:click="counter += 1">Add 1</button>-->
-      <!--<p>The button above has been clicked {{ counter }} times.</p>-->
-    <!--</div>-->
-
+    <div>
+      <span>请输入数字：</span>
+      <input type="text" v-model="counterNumber">
+    </div>
+    <Counter/>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
+    import Counter from './components/Counter.vue'
 
-export default {
-    name:`app`,
-    data: function () {
-        return{
-            count:0
-        };
-    },
-
-    // 在 `methods` 对象中定义方法
-    methods: {
-        add: function () {
-          this.count++;
+    export default {
+        name: 'app',
+        data() {
+            return {
+                counterNumber: 0
+            }
         },
-        decrease: function () {
-            this.count--;
+
+
+        components: {
+            Counter
         }
+
     }
-  // name: 'app',
-  // components: {
-  //   HelloWorld
-  // }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>
