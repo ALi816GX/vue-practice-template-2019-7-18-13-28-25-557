@@ -1,8 +1,7 @@
 <template>
     <div>
         <Counter v-for="item in items" :key="item.key" :number="item.number"></Counter>
-        <CounterSum :total="total"></CounterSum>
-        <!--<span>{{getCounterNumber}}</span>-->
+        <CounterSum></CounterSum>
     </div>
 </template>
 
@@ -33,13 +32,14 @@
 
         watch: {
             getCounterNumber(counterNum){
+
                 this.items = [];
                 for (let i = 0; i < counterNum; i++) {
                     this.items.push({key: i,number: 0});
                 }
-                this.total = 0;
 
                 this.$store.commit("clearTotal");
+
             }
         }
     }

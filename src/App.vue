@@ -24,9 +24,11 @@
                 counterNumber: 0
             }
         },
+
         components: {
             CounterGroup
         },
+
         watch: {
             counterNumber: function () {
                 this.$store.commit('setCounterNum',this.counterNumber);
