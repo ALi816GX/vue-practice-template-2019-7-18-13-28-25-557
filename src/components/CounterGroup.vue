@@ -1,20 +1,19 @@
 <template>
-    <div id="counterGroup">
-
-        <Counter v-for="(countOne, index) in counts" :key="index" :number="countOne.number" :index="index"></Counter>
-        <CounterSum :total="total"/>
-
+    <div>
+        <Counter v-for="item in items" :key="item.key" :number="item.number" @add="addTotal" @minus="minusTotal"></Counter>
+        <CounterSum :total="total"></CounterSum>
     </div>
 </template>
 
 <script>
-    import Counter from './Counter'
+    import Counter from './Counter';
     import CounterSum from './CounterSum';
 
     export default {
+        name:"counterGroup",
         data () {
             return {
-                counts: [],
+                items: [],
                 total: 0
             }
         },
@@ -24,35 +23,26 @@
             CounterSum
         },
 
-        props: ["counterNumber"],
+        props:["counterNumber"],
 
         watch: {
-
-            counterNumber () {
-                this.counts = [];
-                this.total = 0;
+            counterNumber: function () {
+                this.items = [];
                 for (let i = 0; i < this.counterNumber; i++) {
-                    this.counts.push({number: 0});
+                    this.items.push({key: i,number: 0});
                 }
+                this.total = 0;
             }
-
         },
+        methods:{
+            addTotal(value){
+                this.total += value;
 
-        mounted () {
 
-            for (let i = 0; i < this.counterNumber; i++) {
-                this.counts.push({number: 0});
+            },
+            minusTotal(value){
+                this.total += value;
             }
-
-            let chosedOne = this;
-            chosedOne.$root.$on('change', function(val) {
-                chosedOne.counts[val.index].number = val.number;
-                chosedOne.total = 0;
-                for (let i = 0; i < chosedOne.counts.length; i++) {
-                    chosedOne.total += chosedOne.counts[i].number;
-                }
-            });
-
         }
     }
 </script>

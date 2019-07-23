@@ -1,8 +1,8 @@
 <template>
-    <div class="counter">
-        <div>{{number}}</div>
-        <button v-on:click="add">add+</button>
-        <button v-on:click="minus">minus-</button>
+    <div id="counter">
+        <div>{{num}}</div>
+        <button @click="add()">add+</button>
+        <button @click="minus()">minus-</button>
     </div>
 </template>
 
@@ -12,25 +12,32 @@
 
         data () {
             return {
+                num:this.number
             }
         },
 
         methods: {
             add () {
-                this.number++;
-                this.$root.$emit('change', {"index": this.index, "number": this.number});
+                this.num++;
+                this.$emit("add",1);
             },
             minus () {
-                this.number--;
-                this.$root.$emit('change', {"index": this.index, "number": this.number});
+                this.num--;
+                this.$emit("minus",-1);
             }
         },
 
-        props: {
-            number: Number,
-            index: Number
+        props:{
+            number:Number
         }
+
     }
-
-
 </script>
+
+<style>
+    #counter {
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>

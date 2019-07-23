@@ -7,7 +7,7 @@
       <input type="text" v-model="counterNumber">
     </div>
 
-    <CounterGroup :counterNumber = "counterNumber"/>
+    <CounterGroup :counterNumber="counterNumber"></CounterGroup>
 
   </div>
 
@@ -15,16 +15,22 @@
 
 <script>
     import CounterGroup from './components/CounterGroup.vue'
+
     export default {
 
         name: 'app',
         data() {
             return {
-                counterNumber: 5
+                counterNumber: 0
             }
         },
         components: {
-            CounterGroup,
+            CounterGroup
+        },
+        watch: {
+            counterNumber: function () {
+
+            }
         }
     }
 </script>
@@ -33,11 +39,9 @@
 
 <style>
   #app {
-
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     text-align: center;
     color: #2c3e50;
     margin-top: 20px;
-
   }
 </style>
