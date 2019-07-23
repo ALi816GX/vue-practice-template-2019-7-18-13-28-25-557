@@ -35,8 +35,8 @@
             }
         }
     }
-</script>
 
+</script>
 
 
 <style>
