@@ -1,7 +1,8 @@
 <template>
     <div>
-        <Counter v-for="item in items" :key="item.key" :number="item.number" @add="addTotal" @minus="minusTotal"></Counter>
+        <Counter v-for="item in items" :key="item.key" :number="item.number"></Counter>
         <CounterSum :total="total"></CounterSum>
+        <!--<span>{{getCounterNumber}}</span>-->
     </div>
 </template>
 
@@ -14,7 +15,8 @@
         data () {
             return {
                 items: [],
-                total: 0
+                total: 0,
+                counterNumber: 0
             }
         },
 
@@ -23,28 +25,21 @@
             CounterSum
         },
 
-        props:["counterNumber"],
+        computed: {
+          getCounterNumber() {
+              return this.$store.getters.getCounterNum;
+          }
+        },
 
         watch: {
-            counterNumber: function () {
+            getCounterNumber(counterNum){
                 this.items = [];
-                for (let i = 0; i < this.counterNumber; i++) {
+                for (let i = 0; i < counterNum; i++) {
                     this.items.push({key: i,number: 0});
                 }
                 this.total = 0;
 
                 this.$store.commit("clearTotal");
-
-            },
-        },
-        methods:{
-            addTotal(value){
-                this.total += value;
-
-
-            },
-            minusTotal(value){
-                this.total += value;
             }
         }
     }

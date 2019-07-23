@@ -1,7 +1,7 @@
 <template>
     <div id="counterSum">
         <span>Total:</span>
-        <span>{{$store.getters.getTotalNum()}}</span>
+        <span>{{$store.getters.getTotalNum}}</span>
     </div>
 </template>
 

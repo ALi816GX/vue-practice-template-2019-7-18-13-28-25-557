@@ -13,16 +13,24 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        totalNum: 0
+
+        totalNum: 0,
+        counterNum: 0
+
     },
     getters:{
+
         getTotalNum:function (state) {
-            return function () {
-                return state.totalNum;
-            }
+          return state.totalNum;
+        },
+
+        getCounterNum: function (state) {
+          return state.counterNum;
         }
+
     },
     mutations: {
+
         addTotal (state) {
             state.totalNum++;
         },
@@ -31,7 +39,13 @@ const store = new Vuex.Store({
         },
         clearTotal (state) {
             state.totalNum = 0;
+        },
+
+        setCounterNum (state,value){
+            state.counterNum = value;
         }
+
+
     }
 });
 

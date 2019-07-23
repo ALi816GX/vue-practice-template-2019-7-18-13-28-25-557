@@ -7,10 +7,7 @@
       <input type="text" v-model="counterNumber">
     </div>
 
-    <CounterGroup :counterNumber="counterNumber"></CounterGroup>
-    <!--<br>-->
-    <!--<br>-->
-    <!--<span>{{$store.getters.getTotalNum()}}</span>-->
+    <CounterGroup></CounterGroup>
 
   </div>
 
@@ -32,7 +29,7 @@
         },
         watch: {
             counterNumber: function () {
-
+                this.$store.commit('setCounterNum',this.counterNumber);
             }
         }
     }
@@ -41,10 +38,12 @@
 
 
 <style>
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     text-align: center;
     color: #2c3e50;
     margin-top: 20px;
   }
+
 </style>
