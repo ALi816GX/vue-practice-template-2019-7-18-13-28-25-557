@@ -1,18 +1,17 @@
 <template>
     <div id="counterSum">
         <span>Total:</span>
-        <span>{{total}}</span>
+        <span>{{$store.getters.getTotalNum()}}</span>
     </div>
 </template>
 
 <script>
     export default {
-        name: "counterSum",
-        props: {
-            "total": Number
-        }
+
+        name: "counterSum"
 
     }
+
 </script>
 
 <style>

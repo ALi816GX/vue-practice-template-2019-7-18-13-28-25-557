@@ -8,9 +8,9 @@
     </div>
 
     <CounterGroup :counterNumber="counterNumber"></CounterGroup>
-    <br>
-    <br>
-    <span>{{$store.getters.getTotalNum()}}</span>
+    <!--<br>-->
+    <!--<br>-->
+    <!--<span>{{$store.getters.getTotalNum()}}</span>-->
 
   </div>
 

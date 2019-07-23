@@ -28,6 +28,9 @@ const store = new Vuex.Store({
         },
         minusTotal (state) {
             state.totalNum--;
+        },
+        clearTotal (state) {
+            state.totalNum = 0;
         }
     }
 });

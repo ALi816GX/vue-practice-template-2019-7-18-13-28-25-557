@@ -19,13 +19,13 @@
         methods: {
             add () {
                 this.num++;
-                this.$emit("add",1);
+                // this.$emit("add",1);
                 this.$store.commit('addTotal')
             },
             minus () {
                 this.num--;
-                this.$emit("minus",-1);
-                this.$store.commit('minusTotal')
+                // this.$emit("minus",-1);
+                this.$store.commit('minusTotal');
             }
         },
 

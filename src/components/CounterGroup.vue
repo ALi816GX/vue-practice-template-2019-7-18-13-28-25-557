@@ -32,7 +32,10 @@
                     this.items.push({key: i,number: 0});
                 }
                 this.total = 0;
-            }
+
+                this.$store.commit("clearTotal");
+
+            },
         },
         methods:{
             addTotal(value){
