@@ -6,10 +6,12 @@
     <p>obj.a: {{obj.a}}</p>
     <p>obj.a: <input type="text" v-model="obj.a"></p>
     <input type="button" @click="this.testClick">
-    <!--<input v-model="array">-->
     <p>array[0]: {{array[0]}}</p>
     <p>array[0]: <input type="text" v-model="array[0]"></p>
     <input type="button" @click="this.testClick2">
+    <p>arrayObject[0]: {{arrayObject[0].a}}</p>
+    <p>arrayObject[0]: <input type="text" v-model="arrayObject[0].a"></p>
+    <input type="button" @click="this.testClick3">
     <p>{{value}}</p>
     <p>{{caculateNum}}</p>
 
@@ -31,7 +33,12 @@
             obj:{
               a: 123
             },
-            array:[1,2]
+            array:[1,2],
+            arrayObject:[{
+              a:123
+            },{
+              a:234
+            }]
           }
         },
         methods:{
@@ -47,6 +54,9 @@
             this.array[0] = 100;
             // this.array.push(1);
             console.log('-----1----');
+          },testClick3(){
+            console.log('-----');
+            this.arrayObject[0].a = 100;
           }
 
         },
@@ -60,7 +70,8 @@
       watch:{
         obj: {
           handler(newName, oldName) {
-            console.log('obj.a changed');
+            console.log('newName',newName);
+            console.log('oldName',oldName);
           },
           deep: true
         },
